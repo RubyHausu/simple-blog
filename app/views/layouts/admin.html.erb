@@ -43,7 +43,11 @@
           <a class="blog-nav-item active" href="/admin">Posts</a>
           <a class="blog-nav-item" href="/admin/posts/new">Create a post</a>
 
-          <%= link_to("Sign Out", admin_sign_out_path, class: "blog-nav-item pull-right") %>
+          <% if sign_in? %>
+            <%= link_to("Sign Out", admin_sign_out_path, class: "blog-nav-item pull-right") %>
+          <% else %>
+            <%= link_to("Sign Up", admin_sign_up_path, class: "blog-nav-item pull-right") %>
+          <% end %>
         </nav>
       </div>
     </div>
@@ -51,12 +55,6 @@
     <div class="container">
       <%= yield %>
     </div><!-- /.container -->
-
-    <footer class="blog-footer">
-        <a href="#">Back to top</a>
-      </p>
-    </footer>
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
